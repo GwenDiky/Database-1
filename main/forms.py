@@ -26,7 +26,7 @@ class CardForm(ModelForm):
     third_dispute = forms.ChoiceField(label="Категория спора (подкатегория 3)", choices=Card.THIRD_DISPUTE, widget=forms.Select(attrs={'class':'form-control'}), required=False)
     date = forms.DateField(label="Дата вынесения постановления:",initial=datetime.date.today() - datetime.timedelta(days=7),widget=forms.SelectDateWidget(years=year_range), required=True)
     class Meta: 
-        model = Card 
+        model = Card
         fields = ("name", "trial",  "instance", "intial", "counter", "appellate", "cassation", "first_dispute", "second1_dispute", "second2_dispute", "third_dispute","proceeding", "motivation",  "review", "case_number", "description", "documents", "original_claim", "counter_claim", "date")
         labels = {
             'name': '',

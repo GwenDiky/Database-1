@@ -10,21 +10,24 @@
 {% endblock %}
 
 {% block content %}
+<div class="page">
 <body>
-  <br><br><center>
+  <br><br>
     <div class="filtration">
-      <h4 style="color:gray;">Фильтр</h4>
       <br>
       <form method=GET>
         {{ myFilter.form }}
         <br>
         <button class="btn btn-dark" type="submit">Применить</button>
-        <button class="btn btn-dark" type="reset">Очистить</button>
+        <input class="btn btn-dark" type="reset" value="Очистить">
+        <form action="POST">
+          <button class="btn btn-dark" type="submit" href="{% url 'main:rights' %}">Отменить поиск</button>
+        </form>
       </form>
     </div>
-  </center>
+    <br> 
   <br><br><br>
-    <table class="table table-bordered table">
+    <table class="table table-bordered table" height="20">
       <tr style="background-color: #bdbcbc58;" class="row1">
        
           <td><em>Наименование </em></td>
@@ -71,5 +74,6 @@
       {% endfor %}
     </table> 
     <a class="btn btn-dark" href="{% url 'main:card_text' %}">Скачать текст постановлений</a><br><br><br>
+  </div>
   </body>
 {% endblock %}

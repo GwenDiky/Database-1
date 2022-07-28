@@ -16,8 +16,12 @@ body {
 }
 
 .filtration {
+    margin-left: 0px;
+    float: left;
     border:10px solid #bdbcbc58;
+    width: 400px;
 }
+
 #menu__toggle {
     opacity: 0;
   }
@@ -98,4 +102,15 @@ body {
 #menu__toggle:checked ~ .menu__box {
   visibility: visible;
   left: 0;
+}
+.page {
+  display: grid;
+  grid-template-areas: "filtration table"
+}
+table {
+  grid-area: table;
+}
+
+.filtration {
+  grid-area: filtration; 
 }

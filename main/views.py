@@ -46,21 +46,11 @@ def card_text(request):
 	response.writelines(lines)
 	return response
     
-"""
-def card_description(request, card_id):
-    response = HttpResponse(content_type='text/plain')
-    response["Content-Disposition"] = "attachment; filename=description.txt"
-    card_des = Card.objects.get(pk=card_id)
-    lines = []
-    for card in card_des:
-        lines.append(f'{card.description}')
-    response.writelines(lines)
-    return response"""
 
 def card_full_text(request, card_id):
     card = Card.objects.get(pk=card_id)
     return render(request, 'main/card_full_text.html', {"card":card, "title":"Полный текст постановления", })
-    _
+
 def edit(request, card_id):
     card = Card.objects.get(pk=card_id)
     form = CardForm(request.POST or None, instance=card)

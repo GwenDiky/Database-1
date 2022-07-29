@@ -30,6 +30,8 @@ def index(request):
     card_list = Card.objects.all().order_by('date')
     dispute = FirstDispute.objects.all()
     myFilter = CardFilter(request.GET, queryset=card_list)
+    if request.method=="GET":
+        pass
     card_list = myFilter.qs
     return render(request, 'main/index.html', {"title":"Интернет-база постановлений судов", 'card_list':card_list, "myFilter":myFilter, 'dispute':dispute,})
 

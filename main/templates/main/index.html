@@ -13,20 +13,32 @@
 <div class="page">
 <body>
   <br><br>
-    <div class="filtration">
+    <div class="filtration" style="font-size:14px;">
       <br>
       <form method=GET>
-        {{ myFilter.form }}
+        {% csrf_token %}
+        
+          <p class="name"><i>С какого числа искать</i>{{ myFilter.form.start_date }}</p>
+          <p class="name"><i>По какое</i>{{ myFilter.form.end_date }}</p>
+          <p style="font-size:16px; color: red;"><i>Наименование суда:</i>{{ myFilter.form.trial }}</p>
+          <p style="font-size:16px; color:#f44133;"><i>Судопроизводство:</i>{{ myFilter.form.proceeding }}</p>
+          <p style="font-size:16px; color: red;"><i>Первая подкатегория:</i>{{ myFilter.form.first_dispute }}</p>
+          <p style="font-size:16px; color: red;"><i>Вторая подкатегория:</i>{{ myFilter.form.second1_dispute }}</p>
+          <p style="font-size:16px; color: red;"><i>Вторая подкатегория:</i>{{ myFilter.form.second2_dispute }}</p>
+          <p style="font-size:16px; color: red;"><i>Третья подкатегория:</i>{{ myFilter.form.third_dispute }}</p>
         <br>
         <button class="btn btn-dark" type="submit">Применить</button>
         <input class="btn btn-dark" type="reset" value="Очистить">
         <form action="POST">
-          <button class="btn btn-dark" type="submit" href="{% url 'main:rights' %}">Отменить поиск</button>
+          <button class="btn btn-dark">Отменить поиск</button>
         </form>
+        <br>
+        <a class="btn btn-dark" href="{% url 'main:card_text' %}">Скачать карточки постановлений</a><br><br><br>
       </form>
     </div>
     <br> 
   <br><br><br>
+  
     <table class="table table-bordered table" height="20">
       <tr style="background-color: #bdbcbc58;" class="row1">
        
@@ -39,14 +51,14 @@
       </tr>
       <tr>
       {% for card in card_list %}
-        <td><a href="{% url 'main:show-card' card.id %}">{{ card }} | {{ card.case_number }}</a></td>
+        <td><a href="{% url 'main:show-card' card.id %}">{{ card|lower|capfirst  }} | {{ card.case_number }}</a></td>
         <center>
           {% if card.motivation %}
             <td style="text-align: center;">
               {% if card.motivation == "Есть" %}
-                <p>✔</p></td>
+                <p class="pictogramas"><img src="{% static 'img/check.png' %}" style="height:25px;"></p></td>
               {% else %}
-                <p>❌</p></td>
+                <p class="pictogramas"><img src="{% static 'img/remove.png' %}" style="height:25px;"></p></td>
               {% endif %}
             {% else %}
             <td style="text-align: center;">Не указано</td>
@@ -54,9 +66,9 @@
           {% if card.review %}
             <td style="text-align: center;">
               {% if card.review == "Есть" %}
-                <p>✔</p></td>
+                <p class="pictogramas"><img src="{% static 'img/check.png' %}" style="height:25px;"></p></td>
               {% else %}
-                <p>❌</p></td>
+                <p class="pictogramas"><img src="{% static 'img/remove.png' %}" style="height:25px;"></p></td>
               {% endif %}
           {% else %}
             <td><center>Не указано</center></td>
@@ -73,7 +85,6 @@
       </tr>    
       {% endfor %}
     </table> 
-    <a class="btn btn-dark" href="{% url 'main:card_text' %}">Скачать текст постановлений</a><br><br><br>
   </div>
   </body>
 {% endblock %}

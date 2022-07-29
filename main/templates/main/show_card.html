@@ -19,7 +19,7 @@
 
 {% block content %}
 <center>
-    <h3>{{ card.name }}</h3><br>
+    <h3>{{ card.name|lower|capfirst  }}</h3><br>
 </center>
     <div class="content">
         <ul>
@@ -62,7 +62,7 @@
                 <li><strong>Сопутствующие документы: </strong> <a href="{{ card.documents }}" target="_blank">{{ card.documents }}</a></li>
             {% endif %}
             
-            <li><strong>Дата назначения постановления: </strong>{{ card.date }}</li>
+            <li><strong>Дата назначения постановления: </strong>{{ card.date|date:"j-n-Y" }}</li>
             <details>
                 <summary class="btn btn-dark">Открыть полный текст постановления</summary>
                 

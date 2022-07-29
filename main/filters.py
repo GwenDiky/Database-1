@@ -6,8 +6,8 @@ from django import forms
 
 
 class CardFilter(django_filters.FilterSet):
-    start_date = DateFilter(field_name="date", lookup_expr='gte', label="Дата вынесения с",  widget=forms.DateInput(attrs={'class': 'form-control', 'style': 'width:400px'}))
-    end_date = DateFilter(field_name="date", lookup_expr='lte', label="по",  widget=forms.TextInput(attrs={'class': 'form-control', 'style': 'width:400px'}))
+    start_date = DateFilter(field_name="date", lookup_expr='gte', label="Дата вынесения с",  widget=forms.DateInput(attrs={'class': 'form-control', 'style': 'width:350px'}))
+    end_date = DateFilter(field_name="date", lookup_expr='lte', label="по",  widget=forms.TextInput(attrs={'class': 'form-control', 'style': 'width:350px'}))
     proceeding = django_filters.MultipleChoiceFilter(choices=Card.PROCEEDING_CHOICES, label="Вид судопроизводства (выберите подходящее значение)", widget=forms.CheckboxSelectMultiple())
     trial = django_filters.MultipleChoiceFilter(choices=Card.TRIALS,label="Наименование суда (выберите подходящее значение)", widget=forms.CheckboxSelectMultiple())
     first_dispute = django_filters.MultipleChoiceFilter(choices=FirstDispute.CHOICES, label="Первая подкатегория спора (выберите подходящее значение)", widget=(forms.CheckboxSelectMultiple()))

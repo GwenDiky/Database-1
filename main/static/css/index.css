@@ -18,7 +18,7 @@ body {
 .filtration {
     margin-left: 0px;
     float: left;
-    border:10px solid #bdbcbc58;
+    border-right:10px solid #bdbcbc58;
     width: 400px;
 }
 
@@ -105,7 +105,8 @@ body {
 }
 .page {
   display: grid;
-  grid-template-areas: "filtration table"
+  grid-template-areas: "filtration table";
+  grid-gap: 50px;
 }
 table {
   grid-area: table;
@@ -113,4 +114,19 @@ table {
 
 .filtration {
   grid-area: filtration; 
+  height: 1000px;
+  overflow-x: scroll;
 }
+
+p {
+  font-size: 22px;
+}
+
+.pictogramas{
+  font-size: 20px;
+}
+
+.name {
+  font-size: 15px;
+}
+

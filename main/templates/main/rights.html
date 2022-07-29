@@ -15,7 +15,7 @@
         <ul>
             
                 <div class="card-body" style="border: 1px solid black; border-radius: 10px; box-shadow: 5px 2px 2px gray;">
-                  <h5 class="card-title">{{ card.name }} | {{ card.case_number }}</h5>
+                  <h5 class="card-title">{{ card.name|lower|capfirst  }} | {{ card.case_number }}</h5>
                   <br>
                   <p class="card-text"><strong>Наименование суда, вынесшего постановление: </strong>{{ card.trial }}</p>
                   <p class="card-text"><strong>Инстанция: </strong>{{ card.instance }}</p>
@@ -62,7 +62,7 @@
                   <br><p class="card-text"><strong>Сопутствующие документы: </strong> <a href="{{ card.documents }}" style="color:black;" target="_blank">{{ card.documents }}</a></p>
               {% endif %}
                   <hr>
-                  <p class="card-text">Дата вынесения постановления: {{ card.date }}</p>
+                  <p class="card-text">Дата вынесения постановления: {{ card.date|date:"j-n-Y" }}</p>
                 </div>
             
               <br><br>
